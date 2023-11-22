@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  image: AssetImage('/assets/images/small_logo.png'),
+                  image: AssetIage('/assets/images/small_logo.png'),
                 ),
               )
             ],
