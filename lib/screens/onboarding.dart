@@ -8,14 +8,9 @@ class OnboardingScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            Container()
-          ],
+          children: [Container()],
         ),
       ),
-    )
-
-      
-
+    );
   }
 }
