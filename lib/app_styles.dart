@@ -7,3 +7,4 @@ const Color kLightGrey = Color(0xFFF3F4F8);
 const Color kPink = Color(0xFFFA0078);
 const Color kMediumGrey = Color(0xFF808080);
 const Color kDarkBlue = Color(0xFF111828);
+const Color kGrey = Color(0xFF666666);
