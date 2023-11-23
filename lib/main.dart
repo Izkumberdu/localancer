@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:localancer/screens/client_homescreen.dart";
 import "package:localancer/screens/onboarding.dart";
 
 void main() {
@@ -20,8 +21,7 @@ class _MyWidgetState extends State<LocalancerApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-          backgroundColor: Color(0xFFFCFCFC), body: OnboardingScreen()),
+      home: Scaffold(backgroundColor: Color(0xFFFCFCFC), body: HomeScreen()),
     );
   }
 }
