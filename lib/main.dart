@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:localancer/Screens/login.dart";
+import "package:localancer/Screens/register-1.dart";
+import "package:localancer/Screens/register-2.dart";
 import "package:localancer/screens/onboarding.dart";
 
 void main() {
@@ -21,7 +23,7 @@ class _MyWidgetState extends State<LocalancerApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(backgroundColor: Color(0xFFFCFCFC), body: LoginPage()),
+      home: Scaffold(backgroundColor: Color(0xFFFCFCFC), body: Register2()),
     );
   }
 }
