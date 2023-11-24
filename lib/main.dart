@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:localancer/Screens/Register/register-Client.dart";
 import "package:localancer/Screens/login.dart";
 import "package:localancer/Screens/Register/register-1.dart";
 import "package:localancer/Screens/Register/register-2.dart";
@@ -26,7 +27,8 @@ class _MyWidgetState extends State<LocalancerApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(backgroundColor: Color(0xFFFCFCFC), body: HomeScreen()),
+      home:
+          Scaffold(backgroundColor: Color(0xFFFCFCFC), body: RegisterClient()),
     );
   }
 }

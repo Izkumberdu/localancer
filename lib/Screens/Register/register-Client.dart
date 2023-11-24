@@ -3,14 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:localancer/app_styles.dart';
 import 'package:localancer/size_config.dart';
 
-class RegisterFreelancer extends StatefulWidget {
-  const RegisterFreelancer({Key? key});
+class RegisterClient extends StatefulWidget {
+  const RegisterClient({Key? key});
 
   @override
-  State<RegisterFreelancer> createState() => _RegisterFreelancerState();
+  State<RegisterClient> createState() => _RegisterClientState();
 }
 
-class _RegisterFreelancerState extends State<RegisterFreelancer> {
+class _RegisterClientState extends State<RegisterClient> {
   List<String> selectedPhotographers = [];
   List<String> selectedVideographers = [];
   List<String> selectedGraphicsDesigners = [];
