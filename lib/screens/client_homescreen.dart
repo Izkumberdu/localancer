@@ -30,8 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Container(
-                      margin: const EdgeInsets.only(
-                          left: 16, top: 16), // Add padding here
+                      margin: const EdgeInsets.only(left: 16, top: 16),
                       height: 200,
                       width: 200,
                       decoration: const BoxDecoration(
