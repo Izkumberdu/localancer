@@ -27,7 +27,7 @@ class _MyWidgetState extends State<LocalancerApp> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(backgroundColor: Color(0xFFFCFCFC), body: FLhomescreen()),
     );
   }

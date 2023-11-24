@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:localancer/app_styles.dart';
 import 'package:localancer/models/freelancerUsers.dart';
+import 'package:localancer/sidebar.dart';
 import 'package:localancer/size_config.dart';
 
 class FLhomescreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class FLhomescreen extends StatefulWidget {
 }
 
 class _FLhomescreenState extends State<FLhomescreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   FreelancerUser jonathan = FreelancerUser.Freelancers[0];
 
   @override
@@ -20,6 +22,8 @@ class _FLhomescreenState extends State<FLhomescreen> {
     SizeConfig sizeConfig = SizeConfig();
     sizeConfig.init(context);
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: Sidebar(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: SingleChildScrollView(
@@ -37,9 +41,16 @@ class _FLhomescreenState extends State<FLhomescreen> {
                       image: AssetImage('assets/small-logo-heading.png'),
                     ),
                   ),
-                  Container(
-                    child: Image(image: AssetImage('assets/setting.png')),
-                  ),
+                  GestureDetector(
+                    onTap: () {
+                      _scaffoldKey.currentState?.openEndDrawer();
+                    },
+                    child: Container(
+                      child: Image(
+                        image: AssetImage('assets/setting.png'),
+                      ),
+                    ),
+                  )
                 ],
               ),
               SizedBox(

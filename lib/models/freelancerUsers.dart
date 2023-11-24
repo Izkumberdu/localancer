@@ -4,6 +4,7 @@ class FreelancerUser {
   String fullAddress;
   String profession;
   String professionType;
+  String type;
   String firstName;
   String lastName;
   String fullName;
@@ -16,6 +17,7 @@ class FreelancerUser {
   FreelancerUser({
     this.region = '',
     this.city = '',
+    this.type = '',
     this.fullAddress = '',
     this.profession = '',
     this.professionType = '',
@@ -36,6 +38,7 @@ class FreelancerUser {
       professionType: 'Wedding Photographer',
       city: 'Cebu City',
       fullAddress: 'Cebu City, Basak San Nicolas',
+      type: 'Freelancer',
       firstName: 'Jonathan',
       lastName: 'Santiago',
       fullName: 'Jonathan Santiago',
