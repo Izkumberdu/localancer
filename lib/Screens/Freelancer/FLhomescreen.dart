@@ -66,7 +66,7 @@ class _FLhomescreenState extends State<FLhomescreen> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.only(left: 20), // Add left padding
+                  padding: EdgeInsets.only(left: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -83,8 +83,7 @@ class _FLhomescreenState extends State<FLhomescreen> {
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment
-                            .start, // Align items to the start horizontally
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             jonathan.fullName,
