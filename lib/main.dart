@@ -34,7 +34,9 @@ class _MyWidgetState extends State<LocalancerApp> {
         body: LoginPage(),
       ),
       routes: {
-        '/onboarding': (context) => OnboardingScreen(),
+        '/onboarding': (context) => OnboardingScreen(
+              usertype: '',
+            ),
         '/register1': (context) => Register1(),
         '/login': (context) => LoginPage(),
         '/register2': (context) => Register2(),

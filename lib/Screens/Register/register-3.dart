@@ -203,24 +203,33 @@ class _Register3State extends State<Register3> {
             SizedBox(
               height: SizeConfig.blockSizeVertical! * 15,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Already Registered?',
-                  style: SoraLight.copyWith(
-                    fontSize: 14,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already Registered? ',
+                    style: GoogleFonts.sora(
+                        fontWeight: FontWeight.w300,
+                        color: kDarkBlue,
+                        fontSize: 14),
                   ),
-                ),
-                SizedBox(
-                  width: SizeConfig.blockSizeHorizontal! * 0.5,
-                ),
-                Text('Sign In',
-                    style: SoraSemiBold.copyWith(
-                      fontSize: 14,
-                      decoration: TextDecoration.underline,
-                    )),
-              ],
+                  SizedBox(
+                    width: SizeConfig.blockSizeHorizontal! * 0.5,
+                  ),
+                  Text(
+                    'Sign In',
+                    style: GoogleFonts.sora(
+                        fontWeight: FontWeight.w600,
+                        color: kDarkBlue,
+                        decoration: TextDecoration.underline,
+                        fontSize: 14),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
