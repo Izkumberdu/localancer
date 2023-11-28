@@ -10,7 +10,7 @@ class FreelancerUser {
   String fullName;
   String email;
   String contactNumber;
-  List<String> portfolio;
+  List<List<String>> portfolio;
   String profilePicture;
   String numProjects;
 
@@ -45,9 +45,16 @@ class FreelancerUser {
       email: 'jonathan@gmail.com',
       contactNumber: '09326534419',
       portfolio: [
-        'filepath1',
-        'filepath2',
-        'filepath3',
+        [
+          'assets/moalboal-1.jpg',
+          'assets/moalboal-2.jpeg',
+          'assets/moalboal-3.jpg'
+        ],
+        [
+          'assets/bantayan-1.jpg',
+          'assets/bantayan-2.jpg',
+          'assets/bantayan-3.jpg'
+        ],
       ],
       profilePicture: 'assets/jonathan.png',
       numProjects: '12 Projects',

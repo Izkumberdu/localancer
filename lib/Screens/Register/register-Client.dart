@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localancer/app_styles.dart';
+import 'package:localancer/screens/onboarding.dart';
 import 'package:localancer/size_config.dart';
 
 class RegisterClient extends StatefulWidget {
@@ -130,51 +131,72 @@ class _RegisterClientState extends State<RegisterClient> {
             SizedBox(
               height: SizeConfig.blockSizeVertical! * 5,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: SizeConfig.blockSizeVertical! * 5,
-                  width: SizeConfig.blockSizeHorizontal! * 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: kPink,
+            GestureDetector(
+              onTap: () {
+                var selectedUser = "client";
+                String usertype = selectedUser.toLowerCase();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => OnboardingScreen(usertype: usertype),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Complete Registration',
-                          style: GoogleFonts.sora(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            fontSize: 16,
-                          ))
-                    ],
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: SizeConfig.blockSizeVertical! * 5,
+                    width: SizeConfig.blockSizeHorizontal! * 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: kPink,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Complete Registration',
+                            style: GoogleFonts.sora(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: 16,
+                            ))
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             SizedBox(
               height: SizeConfig.blockSizeVertical! * 15,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Already Registered?',
-                  style: SoraLight.copyWith(
-                    fontSize: 14,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already Registered? ',
+                    style: GoogleFonts.sora(
+                        fontWeight: FontWeight.w300,
+                        color: kDarkBlue,
+                        fontSize: 14),
                   ),
-                ),
-                SizedBox(
-                  width: SizeConfig.blockSizeHorizontal! * 0.5,
-                ),
-                Text('Sign In',
-                    style: SoraSemiBold.copyWith(
-                      fontSize: 14,
-                      decoration: TextDecoration.underline,
-                    )),
-              ],
+                  SizedBox(
+                    width: SizeConfig.blockSizeHorizontal! * 0.5,
+                  ),
+                  Text(
+                    'Sign In',
+                    style: GoogleFonts.sora(
+                        fontWeight: FontWeight.w600,
+                        color: kDarkBlue,
+                        decoration: TextDecoration.underline,
+                        fontSize: 14),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

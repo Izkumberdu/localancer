@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:localancer/Screens/Freelancer/FLhomescreen.dart";
+import "package:localancer/Screens/Freelancer/portfolio.dart";
 import "package:localancer/Screens/Register/register-Client.dart";
 import "package:localancer/Screens/login.dart";
 import "package:localancer/Screens/Register/register-1.dart";
@@ -28,7 +29,21 @@ class _MyWidgetState extends State<LocalancerApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(backgroundColor: Color(0xFFFCFCFC), body: FLhomescreen()),
+      home: Scaffold(
+        backgroundColor: Color(0xFFFCFCFC),
+        body: LoginPage(),
+      ),
+      routes: {
+        '/onboarding': (context) => OnboardingScreen(
+              usertype: '',
+            ),
+        '/register1': (context) => Register1(),
+        '/login': (context) => LoginPage(),
+        '/register2': (context) => Register2(),
+        '/register3': (context) => Register3(),
+        '/registerFreelancer': (context) => RegisterFreelancer(),
+        '/registerClient': (context) => RegisterClient(),
+      },
     );
   }
 }

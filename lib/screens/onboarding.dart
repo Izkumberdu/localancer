@@ -3,7 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import "package:localancer/constants/constants.dart";
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  final String usertype;
+
+  const OnboardingScreen({Key? key, required this.usertype}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
