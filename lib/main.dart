@@ -29,7 +29,19 @@ class _MyWidgetState extends State<LocalancerApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(backgroundColor: Color(0xFFFCFCFC), body: FLPortfolio()),
+      home: Scaffold(
+        backgroundColor: Color(0xFFFCFCFC),
+        body: LoginPage(),
+      ),
+      routes: {
+        '/onboarding': (context) => OnboardingScreen(),
+        '/register1': (context) => Register1(),
+        '/login': (context) => LoginPage(),
+        '/register2': (context) => Register2(),
+        '/register3': (context) => Register3(),
+        '/registerFreelancer': (context) => RegisterFreelancer(),
+        '/registerClient': (context) => RegisterClient(),
+      },
     );
   }
 }

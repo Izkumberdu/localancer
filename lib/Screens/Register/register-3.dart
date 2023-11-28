@@ -167,29 +167,38 @@ class _Register3State extends State<Register3> {
             SizedBox(
               height: SizeConfig.blockSizeVertical! * 3,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: SizeConfig.blockSizeVertical! * 5,
-                  width: SizeConfig.blockSizeHorizontal! * 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: kPink,
+            GestureDetector(
+              onTap: () {
+                if (selectedUser == 'Client') {
+                  Navigator.pushNamed(context, '/registerClient');
+                } else if (selectedUser == 'Freelancer') {
+                  Navigator.pushNamed(context, '/registerFreelancer');
+                }
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: SizeConfig.blockSizeVertical! * 5,
+                    width: SizeConfig.blockSizeHorizontal! * 80,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: kPink,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Proceed To The Next Step',
+                            style: GoogleFonts.sora(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: 16,
+                            ))
+                      ],
+                    ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Proceed To The Next Step',
-                          style: GoogleFonts.sora(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            fontSize: 16,
-                          ))
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
             SizedBox(
               height: SizeConfig.blockSizeVertical! * 15,

@@ -164,23 +164,28 @@ class LoginPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      height: SizeConfig.blockSizeVertical! * 5,
-                      width: SizeConfig.blockSizeHorizontal! * 80,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                        color: kPink,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Sign In',
-                              style: GoogleFonts.sora(
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                                fontSize: 16,
-                              ))
-                        ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/onboarding');
+                      },
+                      child: Container(
+                        height: SizeConfig.blockSizeVertical! * 5,
+                        width: SizeConfig.blockSizeHorizontal! * 80,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          color: kPink,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Sign In',
+                                style: GoogleFonts.sora(
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ))
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -248,23 +253,32 @@ class LoginPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Not Registered Yet?',
-                      style: GoogleFonts.sora(
-                          fontWeight: FontWeight.w300,
-                          color: kDarkBlue,
-                          fontSize: 14),
-                    ),
-                    SizedBox(
-                      width: SizeConfig.blockSizeHorizontal! * 0.5,
-                    ),
-                    Text(
-                      'Create Account',
-                      style: GoogleFonts.sora(
-                          fontWeight: FontWeight.w600,
-                          color: kDarkBlue,
-                          decoration: TextDecoration.underline,
-                          fontSize: 14),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/register1');
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            'Not Registered Yet?',
+                            style: GoogleFonts.sora(
+                                fontWeight: FontWeight.w300,
+                                color: kDarkBlue,
+                                fontSize: 14),
+                          ),
+                          SizedBox(
+                            width: SizeConfig.blockSizeHorizontal! * 0.5,
+                          ),
+                          Text(
+                            'Create Account',
+                            style: GoogleFonts.sora(
+                                fontWeight: FontWeight.w600,
+                                color: kDarkBlue,
+                                decoration: TextDecoration.underline,
+                                fontSize: 14),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
