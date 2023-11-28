@@ -266,6 +266,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 15,
+              ),
               Row(
                 children: [
                   buildCategoryContainer(
@@ -283,7 +286,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              // Add more widgets specific to this category
             ] else if (category == 'Events & Entertainment') ...[
               Row(
                 children: [
@@ -302,6 +304,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 15,
+              ),
               Row(
                 children: [
                   buildCategoryContainer(
@@ -319,7 +324,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              // Add more widgets specific to this category
             ] else if (category == 'Beauty & Wellness') ...[
               Row(
                 children: [
@@ -338,6 +342,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 15,
+              ),
               Row(
                 children: [
                   buildCategoryContainer(
@@ -355,7 +362,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              // Add more widgets specific to this category
             ] else if (category == 'Personal Services') ...[
               Row(
                 children: [
@@ -374,6 +380,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 15,
+              ),
               Row(
                 children: [
                   buildCategoryContainer(
@@ -384,14 +393,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   const SizedBox(width: 20),
                   buildCategoryContainer(
-                    'Massage Therapists',
+                    'Massage Therapist',
                     '21 Massage Therapists',
                     'assets/Photographer_icon.png',
                     context,
                   ),
                 ],
               ),
-              // Add more widgets specific to this category
             ],
           ],
         ),

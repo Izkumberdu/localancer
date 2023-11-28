@@ -33,7 +33,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
       hourlyRate: 500,
     ),
     Freelancer(
-      imagePath: 'assets/photographer_1.png',
+      imagePath: 'assets/Freelancer_2.png',
       name: 'Aldione Pancho',
       profession: 'Events Photographer',
       location: 'Aloguinsan Cebu',
@@ -44,13 +44,38 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
       projects: 8,
       hourlyRate: 350,
     ),
-    // Add more photographers as needed
+    Freelancer(
+      imagePath: 'assets/Freelancer_3.png',
+      name: 'Franchezko Pueblos',
+      profession: 'Events Photographer',
+      location: 'Aloguinsan Cebu',
+      rating: 5.0,
+      totalReviews: 12,
+      description:
+          'As a passionate wedding photographer, I specialize in turning moments into memories and emotions into everlasting stories...',
+      projects: 8,
+      hourlyRate: 350,
+    ),
+    Freelancer(
+      imagePath: 'assets/Freelancer_4.png',
+      name: 'Juan Dela Cruz',
+      profession: 'Events Photographer',
+      location: 'Aloguinsan Cebu',
+      rating: 5.0,
+      totalReviews: 12,
+      description:
+          'As a passionate wedding photographer, I specialize in turning moments into memories and emotions into everlasting stories...',
+      projects: 8,
+      hourlyRate: 350,
+    ),
   ];
   Widget buildPhotographersList() {
     return Column(
       children: photographers.map((photographer) {
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12),
+          padding: const EdgeInsets.symmetric(
+            vertical: 8,
+          ),
           child: Container(
             width: 375,
             height: 170,
@@ -70,8 +95,8 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                           height: 54,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            image: const DecorationImage(
-                              image: AssetImage('assets/photographer_1.png'),
+                            image: DecorationImage(
+                              image: AssetImage(photographer.imagePath),
                             ),
                           ),
                         ),
@@ -108,7 +133,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                                       width: 10,
                                     ),
                                     Text(
-                                      ' ${photographer.location}', // Use photographer data
+                                      ' ${photographer.location}',
                                       style: GoogleFonts.sora(
                                         fontSize: 10,
                                         color: llightgray,
@@ -126,15 +151,14 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                                       ),
                                     const SizedBox(width: 4),
                                     Text(
-                                      photographer.rating
-                                          .toString(), // Use photographer data
+                                      photographer.rating.toString(),
                                       style: GoogleFonts.sora(
                                         fontSize: 10,
                                         color: llightgray,
                                       ),
                                     ),
                                     Text(
-                                      ' (${photographer.totalReviews})', // Use photographer data
+                                      ' (${photographer.totalReviews})',
                                       style: GoogleFonts.sora(
                                         fontSize: 10,
                                         color: llightgray,
@@ -155,26 +179,26 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                       vertical: 8,
                     ),
                     child: Text(
-                      ' ${photographer.description}', // Use photographer data
+                      ' ${photographer.description}',
                       style: GoogleFonts.sora(fontSize: 9),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 36),
+                    padding: const EdgeInsets.symmetric(horizontal: 56),
                     child: Row(
                       children: [
                         Image.asset(
                           'assets/icons8-projects-48.png',
-                          width: 45,
-                          height: 45,
+                          width: 30,
+                          height: 30,
                         ),
                         const SizedBox(
-                          width: 8,
+                          width: 2,
                         ),
                         Text(
-                          ' ${photographer.projects} Projects', // Use photographer data
+                          ' ${photographer.projects} Projects',
                           style: GoogleFonts.sora(
-                            fontSize: 16,
+                            fontSize: 15,
                             fontWeight: FontWeight.w600,
                             color: llightgray,
                           ),
@@ -184,16 +208,16 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                         ),
                         Image.asset(
                           'assets/icons8-cash-96.png',
-                          width: 45,
-                          height: 45,
+                          width: 30,
+                          height: 30,
                         ),
                         const SizedBox(
                           width: 8,
                         ),
                         Text(
-                          ' \$${photographer.hourlyRate.toInt()}/hr', // Use photographer data
+                          ' \$${photographer.hourlyRate.toInt()}/hr',
                           style: GoogleFonts.sora(
-                            fontSize: 16,
+                            fontSize: 15,
                             fontWeight: FontWeight.w600,
                             color: llightgray,
                           ),
@@ -204,8 +228,8 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                 ],
               ),
               Positioned(
-                bottom: 20,
-                right: 20,
+                bottom: 125,
+                right: 15,
                 child: GestureDetector(
                   onTap: toggleFavorite,
                   child: Image.asset(
@@ -260,7 +284,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                       ),
                     ),
                     const SizedBox(
-                      width: 280,
+                      width: 310,
                     ),
                     InkWell(
                       onTap: () {},
@@ -303,10 +327,10 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                   height: 12,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(right: 30),
+                  padding: const EdgeInsets.only(right: 10),
                   child: Container(
                     height: 46,
-                    width: 358,
+                    width: 380,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       color: llightergray,
@@ -346,7 +370,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
             ),
           ),
           const SizedBox(
-            height: 30,
+            height: 15,
           ),
           Expanded(
             child: SingleChildScrollView(
