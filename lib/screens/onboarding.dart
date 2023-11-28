@@ -67,23 +67,34 @@ class OnboardingScreen extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 23),
-                      child: Container(
-                        height: 62,
-                        width: 350,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: lpink,
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Get Started',
-                            style: GoogleFonts.sora(
-                                color: lwhite,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: () {
+                      if (usertype == 'client') {
+                        Navigator.pushNamed(context, '/client_homescreen');
+                      } else if (usertype == 'freelancer') {
+                        Navigator.pushNamed(context, '/freelancer_homescreen');
+                      } else {
+                        Navigator.pushNamed(context, '/freelancer_homescreen');
+                      }
+                    },
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 23),
+                        child: Container(
+                          height: 62,
+                          width: 350,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: lpink,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Get Started',
+                              style: GoogleFonts.sora(
+                                  color: lwhite,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       ),

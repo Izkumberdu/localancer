@@ -5,6 +5,7 @@ import "package:localancer/Screens/Register/register-Client.dart";
 import "package:localancer/Screens/login.dart";
 import "package:localancer/Screens/Register/register-1.dart";
 import "package:localancer/Screens/Register/register-2.dart";
+import "package:localancer/screens/Freelancer/FLprojects.dart";
 import "package:localancer/screens/Register/register-3.dart";
 import "package:localancer/screens/Register/register-Freelancer.dart";
 import "package:localancer/screens/client_homescreen.dart";
@@ -43,6 +44,10 @@ class _MyWidgetState extends State<LocalancerApp> {
         '/register3': (context) => Register3(),
         '/registerFreelancer': (context) => RegisterFreelancer(),
         '/registerClient': (context) => RegisterClient(),
+        '/client_homescreen': (context) => HomeScreen(),
+        '/freelancer_homescreen': (context) => FLhomescreen(),
+        '/portfolio_FL': (context) => FLPortfolio(),
+        '/projects_FL': (context) => FreelancerProjects(),
       },
     );
   }
