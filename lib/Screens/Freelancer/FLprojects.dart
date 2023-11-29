@@ -20,7 +20,7 @@ class _FreelancerProjectsState extends State<FreelancerProjects> {
       _index = index;
       switch (index) {
         case 0:
-          // Navigator.pushNamed(context, '/');
+          Navigator.pushNamed(context, '/freelancer_homescreen');
           break;
         case 1:
           // Navigator.pushNamed(context, '/');
