@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:localancer/Screens/Freelancer/FLhomescreen.dart';
 import "package:localancer/constants&models/constants.dart";
 import 'package:localancer/screens/client_homescreen.dart';
 
@@ -70,45 +71,47 @@ class OnboardingScreen extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   const SizedBox(height: 30),
-                  Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushReplacement(
-                          context,
-                          PageRouteBuilder(
-                            transitionDuration:
-                                const Duration(milliseconds: 500),
-                            pageBuilder: (_, __, ___) =>
-                                const HomeScreen(), // Replace with your home screen widget
-                            transitionsBuilder: (_, animation, __, child) {
-                              return SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: const Offset(1.0, 0.0),
-                                  end: Offset.zero,
-                                ).animate(animation),
-                                child: child,
-                              );
-                            },
-                          ),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 23),
-                        child: Container(
-                          height: 62,
-                          width: 350,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: lpink,
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Get Started',
-                              style: GoogleFonts.sora(
-                                color: lwhite,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        PageRouteBuilder(
+                          transitionDuration: const Duration(milliseconds: 500),
+                          pageBuilder: (_, __, ___) {
+                            if (usertype == 'client') {
+                              return const HomeScreen();
+                            } else {
+                              return const FLhomescreen();
+                            }
+                          },
+                          transitionsBuilder: (_, animation, __, child) {
+                            return SlideTransition(
+                              position: Tween<Offset>(
+                                begin: const Offset(1.0, 0.0),
+                                end: Offset.zero,
+                              ).animate(animation),
+                              child: child,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 23),
+                      child: Container(
+                        height: 62,
+                        width: 350,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: lpink,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Get Started',
+                            style: GoogleFonts.sora(
+                              color: lwhite,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),

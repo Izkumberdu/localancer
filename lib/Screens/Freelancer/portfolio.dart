@@ -28,8 +28,13 @@ class _FLPortfolioState extends State<FLPortfolio> {
             ),
             Row(
               children: [
-                Container(
-                  child: Image(image: AssetImage('assets/back-icon.png')),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/freelancer_homescreen');
+                  },
+                  child: Container(
+                    child: Image(image: AssetImage('assets/back-icon.png')),
+                  ),
                 ),
                 Expanded(
                   child: Center(

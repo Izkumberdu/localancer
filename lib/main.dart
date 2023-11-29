@@ -36,23 +36,16 @@ class _MyWidgetState extends State<LocalancerApp> {
         body: LoginPage(),
       ),
       routes: {
-        '/onboarding': (context) => const OnboardingScreen(
-              usertype: '',
-            ),
         '/register1': (context) => const Register1(),
         '/login': (context) => const LoginPage(),
         '/register2': (context) => const Register2(),
         '/register3': (context) => const Register3(),
+        '/onboarding': (context) => OnboardingScreen(
+              usertype: '',
+            ),
         '/registerFreelancer': (context) => const RegisterFreelancer(),
         '/registerClient': (context) => const RegisterClient(),
-        // Define initial route
-        '/': (context) => const OnboardingScreen(
-              usertype: '',
-            ), // Define the initial screen
-        '/photographers': (context) =>
-            const PhotographerScreen(), // Define Photographer's screen
-        // Define Videographer's screen
-        // Add more routes for other screens if needed
+        '/photographers': (context) => const PhotographerScreen(),
         '/client_homescreen': (context) => HomeScreen(),
         '/freelancer_homescreen': (context) => FLhomescreen(),
         '/portfolio_FL': (context) => FLPortfolio(),

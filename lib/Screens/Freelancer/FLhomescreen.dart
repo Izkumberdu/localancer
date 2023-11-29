@@ -216,7 +216,7 @@ class _FLhomescreenState extends State<FLhomescreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, '/n portfolio_FL');
+                        Navigator.pushNamed(context, '/portfolio_FL');
                       },
                       child: Container(
                         height: 120,
