@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import "package:localancer/constants/constants.dart";
+import "package:localancer/constants&models/constants.dart";
+import 'package:localancer/screens/client_homescreen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   final String usertype;
@@ -10,19 +11,23 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ldarkgray,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+        backgroundColor: ldarkgray,
+        body: Row(children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const SizedBox(
+              height: 20,
+            ),
             Container(
-              height: 600,
-              width: 600,
+              height: 480,
+              width: 430,
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/Localancer Logo Big.png'),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 30,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 26.0),
@@ -57,27 +62,36 @@ class OnboardingScreen extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    'A platform  where onsite freelancers craft dreams and clients find the perfect brushstroke for their projects.',
+                    'A platform  where onsite freelancers craft dreams and clients \nfind the perfect brushstroke for their projects.',
                     style: GoogleFonts.sora(
                       color: lwhite,
                       fontSize: 10,
                     ),
                     textAlign: TextAlign.left,
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      if (usertype == 'client') {
-                        Navigator.pushNamed(context, '/client_homescreen');
-                      } else if (usertype == 'freelancer') {
-                        Navigator.pushNamed(context, '/freelancer_homescreen');
-                      } else {
-                        Navigator.pushNamed(context, '/freelancer_homescreen');
-                      }
-                    },
-                    child: Center(
+                  const SizedBox(height: 30),
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                          context,
+                          PageRouteBuilder(
+                            transitionDuration:
+                                const Duration(milliseconds: 500),
+                            pageBuilder: (_, __, ___) =>
+                                const HomeScreen(), // Replace with your home screen widget
+                            transitionsBuilder: (_, animation, __, child) {
+                              return SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: const Offset(1.0, 0.0),
+                                  end: Offset.zero,
+                                ).animate(animation),
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
+                      },
                       child: Padding(
                         padding: const EdgeInsets.only(right: 23),
                         child: Container(
@@ -91,9 +105,10 @@ class OnboardingScreen extends StatelessWidget {
                             child: Text(
                               'Get Started',
                               style: GoogleFonts.sora(
-                                  color: lwhite,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
+                                color: lwhite,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
@@ -103,9 +118,7 @@ class OnboardingScreen extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          ]),
+        ]));
   }
 }
