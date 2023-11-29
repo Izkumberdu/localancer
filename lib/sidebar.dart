@@ -18,7 +18,7 @@ class _SidebarState extends State<Sidebar> {
     sizeConfig.init(context);
     return Drawer(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: kLightBlack,
         ),
         child: Padding(
@@ -72,7 +72,7 @@ class _SidebarState extends State<Sidebar> {
               ),
               Row(
                 children: [
-                  Image(image: AssetImage('assets/profile.png')),
+                  const Image(image: AssetImage('assets/profile.png')),
                   SizedBox(
                     width: SizeConfig.blockSizeHorizontal! * 2,
                   ),
@@ -88,7 +88,7 @@ class _SidebarState extends State<Sidebar> {
               ),
               Row(
                 children: [
-                  Image(image: AssetImage('assets/inbox.png')),
+                  const Image(image: AssetImage('assets/inbox.png')),
                   SizedBox(
                     width: SizeConfig.blockSizeHorizontal! * 2,
                   ),
@@ -104,7 +104,7 @@ class _SidebarState extends State<Sidebar> {
               ),
               Row(
                 children: [
-                  Image(image: AssetImage('assets/customer-support.png')),
+                  const Image(image: AssetImage('assets/customer-support.png')),
                   SizedBox(
                     width: SizeConfig.blockSizeHorizontal! * 2,
                   ),
@@ -120,7 +120,7 @@ class _SidebarState extends State<Sidebar> {
               ),
               Row(
                 children: [
-                  Image(image: AssetImage('assets/privace.png')),
+                  const Image(image: AssetImage('assets/privace.png')),
                   SizedBox(
                     width: SizeConfig.blockSizeHorizontal! * 2,
                   ),
@@ -136,7 +136,8 @@ class _SidebarState extends State<Sidebar> {
               ),
               Row(
                 children: [
-                  Image(image: AssetImage('assets/payments-contracts.png')),
+                  const Image(
+                      image: AssetImage('assets/payments-contracts.png')),
                   SizedBox(
                     width: SizeConfig.blockSizeHorizontal! * 2,
                   ),
@@ -152,7 +153,7 @@ class _SidebarState extends State<Sidebar> {
               ),
               Row(
                 children: [
-                  Image(image: AssetImage('assets/FAQ.png')),
+                  const Image(image: AssetImage('assets/FAQ.png')),
                   SizedBox(
                     width: SizeConfig.blockSizeHorizontal! * 2,
                   ),
@@ -168,7 +169,7 @@ class _SidebarState extends State<Sidebar> {
               ),
               Row(
                 children: [
-                  Image(image: AssetImage('assets/about.png')),
+                  const Image(image: AssetImage('assets/about.png')),
                   SizedBox(
                     width: SizeConfig.blockSizeHorizontal! * 2,
                   ),
@@ -193,7 +194,7 @@ class _SidebarState extends State<Sidebar> {
               ),
               Row(
                 children: [
-                  Image(image: AssetImage('assets/settings.png')),
+                  const Image(image: AssetImage('assets/settings.png')),
                   SizedBox(
                     width: SizeConfig.blockSizeHorizontal! * 2,
                   ),
@@ -209,7 +210,7 @@ class _SidebarState extends State<Sidebar> {
               ),
               Row(
                 children: [
-                  Image(image: AssetImage('assets/sign-out.png')),
+                  const Image(image: AssetImage('assets/sign-out.png')),
                   SizedBox(
                     width: SizeConfig.blockSizeHorizontal! * 2,
                   ),

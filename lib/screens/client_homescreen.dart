@@ -46,16 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Align(
-                      alignment: Alignment.topLeft,
-                      child: Container(
-                          margin: const EdgeInsets.only(left: 16, top: 16),
-                          height: 200,
-                          width: 200,
-                          decoration: const BoxDecoration(
-                              image: DecorationImage(
-                            image: AssetImage('assets/Localancer Logo .png'),
-                          )))),
                   Row(
                     children: [
                       Container(
@@ -86,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   const SizedBox(
-                    height: 54,
+                    height: 34,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 20),

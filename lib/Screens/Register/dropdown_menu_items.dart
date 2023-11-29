@@ -3,51 +3,51 @@ import 'package:flutter/material.dart';
 class DropdownItems {
   static List<DropdownMenuItem<String>> getCountryItems() {
     return [
-      DropdownMenuItem<String>(
-        child: Text('Philippines'),
+      const DropdownMenuItem<String>(
         value: 'Philippines',
+        child: Text('Philippines'),
       ),
     ];
   }
 
   static List<DropdownMenuItem<String>> getRegionItems() {
     return [
-      DropdownMenuItem<String>(
-        child: Text('Central Visayas'),
+      const DropdownMenuItem<String>(
         value: 'Central Visayas',
+        child: Text('Central Visayas'),
       ),
-      DropdownMenuItem<String>(
-        child: Text('Western Visayas'),
+      const DropdownMenuItem<String>(
         value: 'Western Visayas',
+        child: Text('Western Visayas'),
       ),
     ];
   }
 
   static List<DropdownMenuItem<String>> getCentralVisayasItems() {
     return [
-      DropdownMenuItem<String>(
-        child: Text('Bohol'),
+      const DropdownMenuItem<String>(
         value: 'Bohol',
+        child: Text('Bohol'),
       ),
-      DropdownMenuItem<String>(
-        child: Text('Cebu'),
+      const DropdownMenuItem<String>(
         value: 'Cebu',
+        child: Text('Cebu'),
       ),
-      DropdownMenuItem<String>(
-        child: Text('Negros Oriental'),
+      const DropdownMenuItem<String>(
         value: 'Negros Oriental',
+        child: Text('Negros Oriental'),
       ),
-      DropdownMenuItem<String>(
-        child: Text('Siquijor'),
+      const DropdownMenuItem<String>(
         value: 'Siquijor',
+        child: Text('Siquijor'),
       ),
-      DropdownMenuItem<String>(
-        child: Text('Talisay City'),
+      const DropdownMenuItem<String>(
         value: 'Talisay City',
+        child: Text('Talisay City'),
       ),
-      DropdownMenuItem<String>(
-        child: Text('Minglanilla'),
+      const DropdownMenuItem<String>(
         value: 'Minglanilla',
+        child: Text('Minglanilla'),
       ),
       // Add more Central Visayas cities and municipalities
     ];
@@ -55,21 +55,21 @@ class DropdownItems {
 
   static List<DropdownMenuItem<String>> getWesternVisayasItems() {
     return [
-      DropdownMenuItem<String>(
-        child: Text('Iloilo City'),
+      const DropdownMenuItem<String>(
         value: 'Iloilo City',
+        child: Text('Iloilo City'),
       ),
-      DropdownMenuItem<String>(
-        child: Text('Bacolod'),
+      const DropdownMenuItem<String>(
         value: 'Bacolod',
+        child: Text('Bacolod'),
       ),
-      DropdownMenuItem<String>(
-        child: Text('Iloilo'),
+      const DropdownMenuItem<String>(
         value: 'Iloilo',
+        child: Text('Iloilo'),
       ),
-      DropdownMenuItem<String>(
-        child: Text('Capiz'),
+      const DropdownMenuItem<String>(
         value: 'Capiz',
+        child: Text('Capiz'),
       ),
       // Add more Western Visayas cities and municipalities
     ];

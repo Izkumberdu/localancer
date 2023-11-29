@@ -228,7 +228,7 @@ class LoginPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
+                        SizedBox(
                           height: 51,
                           width: 51,
                           child: Image(
@@ -238,7 +238,7 @@ class LoginPage extends StatelessWidget {
                         SizedBox(
                           width: SizeConfig.blockSizeVertical! * 6,
                         ),
-                        Container(
+                        SizedBox(
                           height: 51,
                           width: 51,
                           child: Image(

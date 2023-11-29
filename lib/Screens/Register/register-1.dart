@@ -461,7 +461,7 @@ class _Register1State extends State<Register1> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
+                        SizedBox(
                           height: 51,
                           width: 51,
                           child: Image(
@@ -471,7 +471,7 @@ class _Register1State extends State<Register1> {
                         SizedBox(
                           width: SizeConfig.blockSizeVertical! * 6,
                         ),
-                        Container(
+                        SizedBox(
                           height: 51,
                           width: 51,
                           child: Image(

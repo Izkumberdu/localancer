@@ -195,7 +195,7 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                   child: Image.asset(
                     isFavorite
                         ? 'assets/icons8-heart-50 1.png'
-                        : 'assets/Heart.png',
+                        : 'assets/Heart_2.png',
                     width: 30,
                     height: 30,
                   ),
