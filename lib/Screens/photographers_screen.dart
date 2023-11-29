@@ -14,12 +14,6 @@ class PhotographerScreen extends StatefulWidget {
 class _PhotographerScreenState extends State<PhotographerScreen> {
   bool isFavorite = false;
 
-  void toggleFavorite() {
-    setState(() {
-      isFavorite = !isFavorite;
-    });
-  }
-
   GestureDetector buildFreelancerContainer(Freelancer photographer) {
     return GestureDetector(
         onTap: () {
@@ -186,20 +180,6 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                     ),
                   )
                 ],
-              ),
-              Positioned(
-                bottom: 125,
-                right: 15,
-                child: GestureDetector(
-                  onTap: toggleFavorite,
-                  child: Image.asset(
-                    isFavorite
-                        ? 'assets/icons8-heart-50 1.png'
-                        : 'assets/Heart_2.png',
-                    width: 30,
-                    height: 30,
-                  ),
-                ),
               ),
             ]),
           ),
