@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localancer/constants&models/category_page_data.dart';
 import 'package:localancer/constants&models/constants.dart';
+import 'package:localancer/sidebar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   late PageController _pageController;
   late int _currentPageIndex;
 
@@ -31,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        endDrawer: const Sidebar(),
         body: Column(
           children: [
             Container(
@@ -60,19 +63,40 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(
                         width: 170,
                       ),
-                      Transform.scale(
-                        scale: 1.3,
-                        child: Container(
-                          height: 20,
-                          width: 20,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image:
-                                  AssetImage('assets/icons8-hamburger-50.png'),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            PageRouteBuilder(
+                              transitionDuration:
+                                  const Duration(milliseconds: 300),
+                              pageBuilder: (_, __, ___) => const Sidebar(),
+                              transitionsBuilder: (_, animation, __, child) {
+                                return SlideTransition(
+                                  position: Tween<Offset>(
+                                    begin: const Offset(1.0, 0.0),
+                                    end: Offset.zero,
+                                  ).animate(animation),
+                                  child: child,
+                                );
+                              },
+                            ),
+                          );
+                        },
+                        child: Transform.scale(
+                          scale: 1.3,
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/icons8-hamburger-50.png'),
+                              ),
                             ),
                           ),
                         ),
-                      ),
+                      )
                     ],
                   ),
                   const SizedBox(
@@ -104,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Container(
                             height: 46,
-                            width: 358,
+                            width: 385,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
                               color: llightergray,
