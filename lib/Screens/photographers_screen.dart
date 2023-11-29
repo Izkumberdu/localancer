@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localancer/constants&models/constants.dart';
 import 'package:localancer/constants&models/freelancer_model.dart';
+import 'package:localancer/screens/freelancer_profile.dart';
 
 class PhotographerScreen extends StatefulWidget {
   const PhotographerScreen({Key? key}) : super(key: key);
@@ -19,60 +20,19 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
     });
   }
 
-  final List<Freelancer> photographers = [
-    Freelancer(
-      imagePath: 'assets/photographer_1.png',
-      name: 'Joel Villarojo',
-      profession: 'Wedding Photographer',
-      location: 'Cebu City',
-      rating: 5.0,
-      totalReviews: 20,
-      description:
-          'As a passionate wedding photographer, I specialize in turning moments into memories and emotions into everlasting stories...',
-      projects: 12,
-      hourlyRate: 500,
-    ),
-    Freelancer(
-      imagePath: 'assets/Freelancer_2.png',
-      name: 'Aldione Pancho',
-      profession: 'Events Photographer',
-      location: 'Aloguinsan Cebu',
-      rating: 5.0,
-      totalReviews: 12,
-      description:
-          'As a passionate wedding photographer, I specialize in turning moments into memories and emotions into everlasting stories...',
-      projects: 8,
-      hourlyRate: 350,
-    ),
-    Freelancer(
-      imagePath: 'assets/Freelancer_3.png',
-      name: 'Franchezko Pueblos',
-      profession: 'Events Photographer',
-      location: 'Aloguinsan Cebu',
-      rating: 5.0,
-      totalReviews: 12,
-      description:
-          'As a passionate wedding photographer, I specialize in turning moments into memories and emotions into everlasting stories...',
-      projects: 8,
-      hourlyRate: 350,
-    ),
-    Freelancer(
-      imagePath: 'assets/Freelancer_4.png',
-      name: 'Juan Dela Cruz',
-      profession: 'Events Photographer',
-      location: 'Aloguinsan Cebu',
-      rating: 5.0,
-      totalReviews: 12,
-      description:
-          'As a passionate wedding photographer, I specialize in turning moments into memories and emotions into everlasting stories...',
-      projects: 8,
-      hourlyRate: 350,
-    ),
-  ];
-  Widget buildPhotographersList() {
-    return Column(
-      children: photographers.map((photographer) {
-        return Padding(
+  GestureDetector buildFreelancerContainer(Freelancer photographer) {
+    return GestureDetector(
+        onTap: () {
+          if (photographer.name == 'Joel Villarojo') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const FreelancerProfile(),
+              ),
+            );
+          }
+        },
+        child: Padding(
           padding: const EdgeInsets.symmetric(
             vertical: 8,
           ),
@@ -112,14 +72,14 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  ' ${photographer.name}', // Use photographer data
+                                  ' ${photographer.name}',
                                   style: GoogleFonts.sora(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
                                 Text(
-                                  ' ${photographer.profession}', // Use photographer data
+                                  ' ${photographer.profession}',
                                   style: GoogleFonts.sora(
                                     fontSize: 10,
                                     color: llightgray,
@@ -243,7 +203,13 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
               ),
             ]),
           ),
-        );
+        ));
+  }
+
+  Widget buildPhotographersList() {
+    return Column(
+      children: photographers.map((photographer) {
+        return buildFreelancerContainer(photographer);
       }).toList(),
     );
   }
@@ -362,6 +328,10 @@ class _PhotographerScreenState extends State<PhotographerScreen> {
                             ),
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 4),
+                          child: Image.asset('assets/filter_icon.png'),
+                        )
                       ],
                     ),
                   ),

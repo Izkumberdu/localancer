@@ -20,8 +20,8 @@ class LoginPage extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  child: Image(image: AssetImage('assets/small-logo.png')),
                   decoration: BoxDecoration(),
+                  child: Image(image: AssetImage('assets/small-logo.png')),
                 )
               ],
             ),

@@ -46,18 +46,16 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-<<<<<<< HEAD
                   Align(
-                    alignment: Alignment.topLeft,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 16, top: 16),
-                      height: 200,
-                      width: 200,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/Localancer Logo .png'),
-=======
-                  // Adjust these values
+                      alignment: Alignment.topLeft,
+                      child: Container(
+                          margin: const EdgeInsets.only(left: 16, top: 16),
+                          height: 200,
+                          width: 200,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                            image: AssetImage('assets/Localancer Logo .png'),
+                          )))),
                   Row(
                     children: [
                       Container(
@@ -67,7 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: DecorationImage(
                             image: AssetImage('assets/Logo_2.png'),
                           ),
->>>>>>> 3b3e608 (franz commit)
                         ),
                       ),
                       const SizedBox(
@@ -91,7 +88,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   const SizedBox(
                     height: 54,
                   ),
-
                   Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Column(

@@ -6,20 +6,15 @@ Widget buildCategoryContainer(
   String title,
   String subtitle,
   String imagePath,
-  BuildContext context, // Add BuildContext as a parameter
+  BuildContext context,
 ) {
   return GestureDetector(
     onTap: () {
-      // Handle navigation based on the title
       if (title == 'Photographer') {
-        Navigator.pushNamed(
-            context, '/photographers'); // Replace with your route
+        Navigator.pushNamed(context, '/photographers');
       } else if (title == 'Videographers') {
-        Navigator.pushNamed(
-            context, '/videographers'); // Replace with your route
-      } else {
-        // Add more conditions for other categories
-      }
+        Navigator.pushNamed(context, '/videographers');
+      } else {}
     },
     child: Container(
       height: 245,
