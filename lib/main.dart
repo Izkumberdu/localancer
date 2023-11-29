@@ -45,7 +45,9 @@ class _MyWidgetState extends State<LocalancerApp> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color(0xFFFCFCFC),
-        body: LoginPage(),
+        body: OnboardingScreen(
+          usertype: 'client',
+        ),
       ),
       routes: {
         '/register1': (context) => const Register1(),

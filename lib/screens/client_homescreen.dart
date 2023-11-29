@@ -33,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         endDrawer: const Sidebar(),
         body: Column(
           children: [
@@ -65,23 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(
-                            context,
-                            PageRouteBuilder(
-                              transitionDuration:
-                                  const Duration(milliseconds: 300),
-                              pageBuilder: (_, __, ___) => const Sidebar(),
-                              transitionsBuilder: (_, animation, __, child) {
-                                return SlideTransition(
-                                  position: Tween<Offset>(
-                                    begin: const Offset(1.0, 0.0),
-                                    end: Offset.zero,
-                                  ).animate(animation),
-                                  child: child,
-                                );
-                              },
-                            ),
-                          );
+                          _scaffoldKey.currentState?.openEndDrawer();
                         },
                         child: Transform.scale(
                           scale: 1.3,
