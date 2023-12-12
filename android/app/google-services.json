@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "888418645363",
+    "project_id": "locallancer-27cb6",
+    "storage_bucket": "locallancer-27cb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888418645363:android:e1106136c0bd8d17888106",
+        "android_client_info": {
+          "package_name": "com.example.localancer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNVAegPbDztjAxnLYjg4R-fCjRNWThECo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
