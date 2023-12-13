@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:localancer/app_styles.dart';
 import 'package:localancer/models/freelancerUsers.dart';
+import 'package:localancer/screens/Freelancer/FLnavbar.dart';
 import 'package:localancer/sidebar.dart';
 import 'package:localancer/size_config.dart';
 
@@ -14,6 +15,28 @@ class FLhomescreen extends StatefulWidget {
 }
 
 class _FLhomescreenState extends State<FLhomescreen> {
+  int _index = 0;
+
+  void _onTapped(int index) {
+    setState(() {
+      _index = index;
+      switch (index) {
+        case 0:
+          // Navigator.pushNamed(context, '/');
+          break;
+        case 1:
+          // Navigator.pushNamed(context, '/');
+          break;
+        case 3:
+          // Navigator.pushNamed(context, '/');
+          break;
+        case 4:
+          // Navigator.pushNamed(context, '/');
+          break;
+      }
+    });
+  }
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   FreelancerUser jonathan = FreelancerUser.Freelancers[0];
 
@@ -153,67 +176,77 @@ class _FLhomescreenState extends State<FLhomescreen> {
                 padding: const EdgeInsets.only(left: 30),
                 child: Row(
                   children: [
-                    Container(
-                      height: 120,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(24)),
-                        color: kLightGrey,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset('assets/projects.png'),
-                          SizedBox(height: 10),
-                          Text(
-                            'Projects',
-                            style: SoraSemiBold.copyWith(
-                              fontSize: 18,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/projects_FL');
+                      },
+                      child: Container(
+                        height: 120,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(24)),
+                          color: kLightGrey,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 2),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset('assets/projects.png'),
+                            SizedBox(height: 10),
+                            Text(
+                              'Projects',
+                              style: SoraSemiBold.copyWith(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
                       width: 20,
                     ),
-                    Container(
-                      height: 120,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(24)),
-                        color: kLightGrey,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset('assets/portolio.png'),
-                          SizedBox(height: 10),
-                          Text(
-                            'Portfolio',
-                            style: SoraSemiBold.copyWith(
-                              fontSize: 18,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/portfolio_FL');
+                      },
+                      child: Container(
+                        height: 120,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(24)),
+                          color: kLightGrey,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 2),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Image.asset('assets/portolio.png'),
+                            SizedBox(height: 10),
+                            Text(
+                              'Portfolio',
+                              style: SoraSemiBold.copyWith(
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -295,6 +328,10 @@ class _FLhomescreenState extends State<FLhomescreen> {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BotNavBar(
+        currentIndex: _index,
+        onTap: _onTapped,
       ),
     );
   }

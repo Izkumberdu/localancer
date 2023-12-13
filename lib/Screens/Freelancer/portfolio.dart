@@ -19,7 +19,7 @@ class _FLPortfolioState extends State<FLPortfolio> {
     sizeConfig.init(context);
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -28,8 +28,11 @@ class _FLPortfolioState extends State<FLPortfolio> {
             ),
             Row(
               children: [
-                Container(
-                  child: Image(image: AssetImage('assets/back-icon.png')),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/freelancer_homescreen');
+                  },
+                  child: const Image(image: AssetImage('assets/back-icon.png')),
                 ),
                 Expanded(
                   child: Center(
@@ -46,7 +49,7 @@ class _FLPortfolioState extends State<FLPortfolio> {
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Carousel(
+              child: const Carousel(
                 user: 0,
                 portfolio: 0,
                 title: 'Moalboal, Cebu',
@@ -57,7 +60,7 @@ class _FLPortfolioState extends State<FLPortfolio> {
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
-              child: Carousel(
+              child: const Carousel(
                 user: 0,
                 portfolio: 1,
                 title: 'Dalaguete, Cebu',
@@ -72,7 +75,7 @@ class _FLPortfolioState extends State<FLPortfolio> {
                 Container(
                   height: SizeConfig.blockSizeVertical! * 5,
                   width: SizeConfig.blockSizeHorizontal! * 80,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     color: kPink,
                   ),

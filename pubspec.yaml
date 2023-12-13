@@ -37,6 +37,10 @@ dependencies:
   dotted_border: 2.1.0
   google_fonts: ^6.1.0
   carousel_slider: ^4.2.1
+  cloud_firestore: ^4.13.6
+  firebase_auth: ^4.15.3
+  firebase_storage: ^11.5.6
+  firebase_core: ^2.24.2
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +62,8 @@ flutter:
 
   assets:
     - assets/
+    - assets/navbar/
+    - assets/FLprojects/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
