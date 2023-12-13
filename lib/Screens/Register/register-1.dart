@@ -8,7 +8,6 @@ import 'package:localancer/app_styles.dart';
 import 'package:localancer/firebase_auth/firebase_auth_service.dart';
 import 'package:localancer/size_config.dart';
 
-
 class Register1 extends StatefulWidget {
   const Register1({Key? key}) : super(key: key);
 
@@ -52,7 +51,7 @@ class _Register1State extends State<Register1> {
               selectedGender = selectedValue.toString();
             });
           },
-          activeColor: kPink, // Set the active color
+          activeColor: kPink,
         ),
         Text(value),
       ],
@@ -549,64 +548,61 @@ class _Register1State extends State<Register1> {
       ),
     );
   }
-void _signUp() async {
- 
-  setState(() {
-    isSigningUp = true;
-  });
 
-  String email = emailController.text.trim();
-  String password = passwordController.text.trim();
-  String firstName = firstNameController.text.trim();
-  String lastName = lastNameController.text.trim();
-  String contactNumber = contactNumberController.text.trim();
-  String confirmPassword = confirmPasswordController.text.trim();
+  void _signUp() async {
+    setState(() {
+      isSigningUp = true;
+    });
 
-  try {
-    if (password == confirmPassword) {
-      CustomUser? user = await _auth.signUpWithEmailAndPassword(
-        email,
-        password,
-        firstName,
-        lastName,
-        contactNumber,
-      );
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
+    String firstName = firstNameController.text.trim();
+    String lastName = lastNameController.text.trim();
+    String contactNumber = contactNumberController.text.trim();
+    String confirmPassword = confirmPasswordController.text.trim();
 
-      setState(() {
-        isSigningUp = false;
-      });
+    try {
+      if (password == confirmPassword) {
+        CustomUser? user = await _auth.signUpWithEmailAndPassword(
+          email,
+          password,
+          firstName,
+          lastName,
+          contactNumber,
+        );
 
-      if (user != null) {
-       
-        // ignore: use_build_context_synchronously
-        Navigator.pushNamed(context, "/login"); 
+        setState(() {
+          isSigningUp = false;
+        });
+
+        if (user != null) {
+          // ignore: use_build_context_synchronously
+          Navigator.pushNamed(context, "/login");
+        } else {
+          // showToast(message: "Registration failed. Please try again.");
+        }
       } else {
-        // showToast(message: "Registration failed. Please try again.");
+        setState(() {
+          isSigningUp = false;
+        });
       }
-    } else {
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        isSigningUp = false;
+      });
+
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      } else {
+        print('Error occurred: $e');
+      }
+    } catch (e) {
+      print("Error during registration: $e");
       setState(() {
         isSigningUp = false;
       });
     }
-  } on FirebaseAuthException catch (e) {
-    setState(() {
-      isSigningUp = false;
-    });
-
-    if (e.code == 'weak-password') {
-      print('The password provided is too weak.');
-    } else if (e.code == 'email-already-in-use') {
-      print('The account already exists for that email.');
-    } else {
-      print('Error occurred: $e');
-    }
-  } catch (e) {
-    print("Error during registration: $e");
-    setState(() {
-      isSigningUp = false;
-    });
   }
-}
-
-
 }
