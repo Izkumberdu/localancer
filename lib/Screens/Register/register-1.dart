@@ -550,6 +550,7 @@ class _Register1State extends State<Register1> {
     );
   }
 void _signUp() async {
+ 
   setState(() {
     isSigningUp = true;
   });
@@ -576,7 +577,7 @@ void _signUp() async {
       });
 
       if (user != null) {
-        // Registration successful, navigate to the login screen
+       
         // ignore: use_build_context_synchronously
         Navigator.pushNamed(context, "/login"); 
       } else {

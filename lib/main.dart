@@ -20,14 +20,14 @@ void main  () async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
-      appId: "1:1053576448839:android:2b0b0b0b0b0b0b0b0b0b0b",
+      appId: "1:888418645363:android:e1106136c0bd8d17888106",
       messagingSenderId: "1053576448839",
-      projectId: "localancer",
+      projectId: "locallancer-27cb6",
       apiKey: "AIzaSyCNVAegPbDztjAxnLYjg4R-fCjRNWThECo"
     )
   );
   runApp(
-    const LocalancerApp(),
+     LocalancerApp(),
   );
 }
 

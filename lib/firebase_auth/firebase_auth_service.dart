@@ -34,22 +34,23 @@
             await _auth.createUserWithEmailAndPassword(
           email: email,
           password: password,
+          
         );
 
-        User? user = userCredential.user;
-        if (user != null) {
-          CustomUser customUser = CustomUser.fromFirebaseUser(user);
-          customUser.firstName = firstName;
-          customUser.lastName = lastName;
-          customUser.contactNumber = contactNumber;
+          User? user = userCredential.user;
+          if (user != null) {
+            CustomUser customUser = CustomUser.fromFirebaseUser(user);
+            customUser.firstName = firstName;
+            customUser.lastName = lastName;
+            customUser.contactNumber = contactNumber;
 
-        
-        await _firestore.collection('users').doc(user.uid).set({
-        'firstName': firstName,
-        'lastName': lastName,
-        'contactNumber': contactNumber,
-      });
-      
+          
+          await _firestore.collection('users').doc(user.uid).set({
+          'firstName': firstName,
+          'lastName': lastName,
+          'contactNumber': contactNumber,
+        });
+
           return customUser;
         } else {
           return null;
