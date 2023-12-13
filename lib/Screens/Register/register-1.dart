@@ -1,9 +1,13 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localancer/app_styles.dart';
+import 'package:localancer/firebase_auth/firebase_auth_service.dart';
 import 'package:localancer/size_config.dart';
+
 
 class Register1 extends StatefulWidget {
   const Register1({Key? key}) : super(key: key);
@@ -13,6 +17,28 @@ class Register1 extends StatefulWidget {
 }
 
 class _Register1State extends State<Register1> {
+  final FirebaseAuthService _auth = FirebaseAuthService();
+
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController contactNumberController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
+  bool isSigningUp = false;
+
+  @override
+  void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    contactNumberController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   String selectedGender = '';
   Widget customRadio(String value) {
     return Row(
@@ -82,7 +108,6 @@ class _Register1State extends State<Register1> {
                       child: Row(
                         children: [
                           Container(
-                            decoration: BoxDecoration(),
                             child:
                                 Image(image: AssetImage('assets/Customer.png')),
                           ),
@@ -90,12 +115,14 @@ class _Register1State extends State<Register1> {
                             child: Padding(
                               padding: EdgeInsets.only(bottom: 10),
                               child: TextFormField(
+                                controller: firstNameController,
                                 decoration: InputDecoration(
-                                    hintText: 'Last Name',
-                                    hintStyle: SoraExtraLight.copyWith(
-                                      color: kGrey,
-                                    ),
-                                    border: InputBorder.none),
+                                  hintText: 'First Name',
+                                  hintStyle: SoraExtraLight.copyWith(
+                                    color: kGrey,
+                                  ),
+                                  border: InputBorder.none,
+                                ),
                               ),
                             ),
                           ),
@@ -128,7 +155,6 @@ class _Register1State extends State<Register1> {
                       child: Row(
                         children: [
                           Container(
-                            decoration: BoxDecoration(),
                             child:
                                 Image(image: AssetImage('assets/Customer.png')),
                           ),
@@ -136,12 +162,14 @@ class _Register1State extends State<Register1> {
                             child: Padding(
                               padding: EdgeInsets.only(bottom: 10),
                               child: TextFormField(
+                                controller: lastNameController,
                                 decoration: InputDecoration(
-                                    hintText: 'Last Name',
-                                    hintStyle: SoraExtraLight.copyWith(
-                                      color: kGrey,
-                                    ),
-                                    border: InputBorder.none),
+                                  hintText: 'Last Name',
+                                  hintStyle: SoraExtraLight.copyWith(
+                                    color: kGrey,
+                                  ),
+                                  border: InputBorder.none,
+                                ),
                               ),
                             ),
                           ),
@@ -158,8 +186,10 @@ class _Register1State extends State<Register1> {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(left: 20),
-                      child: Text('Gender',
-                          style: SoraExtraLight.copyWith(fontSize: 20)),
+                      child: Text(
+                        'Gender',
+                        style: SoraExtraLight.copyWith(fontSize: 20),
+                      ),
                     ),
                     SizedBox(
                       height: SizeConfig.blockSizeVertical! * 0.5,
@@ -207,19 +237,20 @@ class _Register1State extends State<Register1> {
                       child: Row(
                         children: [
                           Container(
-                            decoration: BoxDecoration(),
                             child: Image(image: AssetImage('assets/email.png')),
                           ),
                           Expanded(
                             child: Padding(
                               padding: EdgeInsets.only(bottom: 10),
                               child: TextFormField(
+                                controller: emailController,
                                 decoration: InputDecoration(
-                                    hintText: 'E-Mail Address',
-                                    hintStyle: SoraExtraLight.copyWith(
-                                      color: kGrey,
-                                    ),
-                                    border: InputBorder.none),
+                                  hintText: 'E-Mail Address',
+                                  hintStyle: SoraExtraLight.copyWith(
+                                    color: kGrey,
+                                  ),
+                                  border: InputBorder.none,
+                                ),
                               ),
                             ),
                           ),
@@ -252,19 +283,20 @@ class _Register1State extends State<Register1> {
                       child: Row(
                         children: [
                           Container(
-                            decoration: BoxDecoration(),
                             child: Image(image: AssetImage('assets/phone.png')),
                           ),
                           Expanded(
                             child: Padding(
                               padding: EdgeInsets.only(bottom: 10),
                               child: TextFormField(
+                                controller: contactNumberController,
                                 decoration: InputDecoration(
-                                    hintText: 'Contact Number',
-                                    hintStyle: SoraExtraLight.copyWith(
-                                      color: kGrey,
-                                    ),
-                                    border: InputBorder.none),
+                                  hintText: 'Contact Number',
+                                  hintStyle: SoraExtraLight.copyWith(
+                                    color: kGrey,
+                                  ),
+                                  border: InputBorder.none,
+                                ),
                               ),
                             ),
                           ),
@@ -296,20 +328,16 @@ class _Register1State extends State<Register1> {
                       ),
                       child: Row(
                         children: [
-                          Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(),
-                                child: Image(
-                                  image: AssetImage('assets/Password.png'),
-                                ),
-                              ),
-                            ],
+                          Container(
+                            child: Image(
+                              image: AssetImage('assets/Password.png'),
+                            ),
                           ),
                           Expanded(
                             child: Padding(
                               padding: EdgeInsets.only(bottom: 10),
                               child: TextFormField(
+                                controller: passwordController,
                                 decoration: InputDecoration(
                                   hintText: 'Password',
                                   hintStyle: SoraExtraLight.copyWith(
@@ -355,20 +383,16 @@ class _Register1State extends State<Register1> {
                       ),
                       child: Row(
                         children: [
-                          Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(),
-                                child: Image(
-                                  image: AssetImage('assets/Password.png'),
-                                ),
-                              ),
-                            ],
+                          Container(
+                            child: Image(
+                              image: AssetImage('assets/Password.png'),
+                            ),
                           ),
                           Expanded(
                             child: Padding(
                               padding: EdgeInsets.only(bottom: 10),
                               child: TextFormField(
+                                controller: confirmPasswordController,
                                 decoration: InputDecoration(
                                   hintText: 'Confirm Password',
                                   hintStyle: SoraExtraLight.copyWith(
@@ -396,7 +420,7 @@ class _Register1State extends State<Register1> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/register2');
+                    _signUp();
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -411,12 +435,14 @@ class _Register1State extends State<Register1> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Proceed To The Next Step',
-                                style: GoogleFonts.sora(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ))
+                            Text(
+                              'Proceed To The Next Step',
+                              style: GoogleFonts.sora(
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -433,22 +459,25 @@ class _Register1State extends State<Register1> {
                       height: SizeConfig.blockSizeVertical! * 0.2,
                       width: SizeConfig.blockSizeHorizontal! * 30,
                       decoration: BoxDecoration(
-                          color: kMediumGrey,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                        color: kMediumGrey,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
                     ),
                     Text(
                       'Or',
                       style: GoogleFonts.sora(
-                          color: kDarkGrey,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15),
+                        color: kDarkGrey,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
                     ),
                     Container(
                       height: SizeConfig.blockSizeVertical! * 0.2,
                       width: SizeConfig.blockSizeHorizontal! * 30,
                       decoration: BoxDecoration(
-                          color: kMediumGrey,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                        color: kMediumGrey,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
                     ),
                   ],
                 ),
@@ -493,9 +522,10 @@ class _Register1State extends State<Register1> {
                       Text(
                         'Already Registered? ',
                         style: GoogleFonts.sora(
-                            fontWeight: FontWeight.w300,
-                            color: kDarkBlue,
-                            fontSize: 14),
+                          fontWeight: FontWeight.w300,
+                          color: kDarkBlue,
+                          fontSize: 14,
+                        ),
                       ),
                       SizedBox(
                         width: SizeConfig.blockSizeHorizontal! * 0.5,
@@ -503,10 +533,11 @@ class _Register1State extends State<Register1> {
                       Text(
                         'Sign In',
                         style: GoogleFonts.sora(
-                            fontWeight: FontWeight.w600,
-                            color: kDarkBlue,
-                            decoration: TextDecoration.underline,
-                            fontSize: 14),
+                          fontWeight: FontWeight.w600,
+                          color: kDarkBlue,
+                          decoration: TextDecoration.underline,
+                          fontSize: 14,
+                        ),
                       ),
                     ],
                   ),
@@ -518,4 +549,63 @@ class _Register1State extends State<Register1> {
       ),
     );
   }
+void _signUp() async {
+  setState(() {
+    isSigningUp = true;
+  });
+
+  String email = emailController.text.trim();
+  String password = passwordController.text.trim();
+  String firstName = firstNameController.text.trim();
+  String lastName = lastNameController.text.trim();
+  String contactNumber = contactNumberController.text.trim();
+  String confirmPassword = confirmPasswordController.text.trim();
+
+  try {
+    if (password == confirmPassword) {
+      CustomUser? user = await _auth.signUpWithEmailAndPassword(
+        email,
+        password,
+        firstName,
+        lastName,
+        contactNumber,
+      );
+
+      setState(() {
+        isSigningUp = false;
+      });
+
+      if (user != null) {
+        // Registration successful, navigate to the login screen
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamed(context, "/login"); 
+      } else {
+        // showToast(message: "Registration failed. Please try again.");
+      }
+    } else {
+      setState(() {
+        isSigningUp = false;
+      });
+    }
+  } on FirebaseAuthException catch (e) {
+    setState(() {
+      isSigningUp = false;
+    });
+
+    if (e.code == 'weak-password') {
+      print('The password provided is too weak.');
+    } else if (e.code == 'email-already-in-use') {
+      print('The account already exists for that email.');
+    } else {
+      print('Error occurred: $e');
+    }
+  } catch (e) {
+    print("Error during registration: $e");
+    setState(() {
+      isSigningUp = false;
+    });
+  }
+}
+
+
 }

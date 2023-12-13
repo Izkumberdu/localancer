@@ -1,3 +1,4 @@
+import "package:firebase_core/firebase_core.dart";
 import "package:flutter/material.dart";
 
 import "package:localancer/Screens/Freelancer/FLhomescreen.dart";
@@ -14,7 +15,17 @@ import "package:localancer/screens/client_homescreen.dart";
 import "package:localancer/screens/onboarding.dart";
 import "package:localancer/screens/photographers_screen.dart";
 
-void main() {
+
+void main  () async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      appId: "1:1053576448839:android:2b0b0b0b0b0b0b0b0b0b0b",
+      messagingSenderId: "1053576448839",
+      projectId: "localancer",
+      apiKey: "AIzaSyCNVAegPbDztjAxnLYjg4R-fCjRNWThECo"
+    )
+  );
   runApp(
     const LocalancerApp(),
   );
@@ -31,13 +42,13 @@ class _MyWidgetState extends State<LocalancerApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const Scaffold(
+      home:  Scaffold(
         backgroundColor: Color(0xFFFCFCFC),
         body: LoginPage(),
       ),
       routes: {
         '/register1': (context) => const Register1(),
-        '/login': (context) => const LoginPage(),
+        '/login': (context) =>  LoginPage(),
         '/register2': (context) => const Register2(),
         '/register3': (context) => const Register3(),
         '/onboarding': (context) => OnboardingScreen(
