@@ -591,6 +591,13 @@ class _Register1State extends State<Register1> {
         isSigningUp = false;
       });
 
+      if (user != null) {
+       
+        // ignore: use_build_context_synchronously
+        Navigator.pushNamed(context, "/login"); 
+      } 
+    } else {
+
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
@@ -600,6 +607,7 @@ class _Register1State extends State<Register1> {
       }
     } catch (e) {
       print("Error during registration: $e");
+
       setState(() {
         isSigningUp = false;
       });
