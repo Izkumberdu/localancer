@@ -69,29 +69,34 @@ class _FLPortfolioState extends State<FLPortfolio> {
             SizedBox(
               height: SizeConfig.blockSizeVertical! * 3,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: SizeConfig.blockSizeVertical! * 5,
-                  width: SizeConfig.blockSizeHorizontal! * 80,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                    color: kPink,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/createportfolio');
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: SizeConfig.blockSizeVertical! * 5,
+                    width: SizeConfig.blockSizeHorizontal! * 80,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      color: kPink,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Add More',
+                            style: GoogleFonts.sora(
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                              fontSize: 16,
+                            ))
+                      ],
+                    ),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text('Add More',
-                          style: GoogleFonts.sora(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            fontSize: 16,
-                          ))
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

@@ -12,7 +12,8 @@ const Color kDarkerGrey = Color(0xFF454545);
 const Color kAsh = Color(0xFF9B9B9B);
 const Color kLightBlack = Color(0xFF272727);
 const Color kGreen = Color(0xFF36C07E);
-
+const Color kLightGreyer = Color(0xFFE8E8E8);
+const Color kContraGrey = Color(0xFF9B9B9B);
 final SoraBold = GoogleFonts.sora(
   color: kDarkBlue,
   fontWeight: FontWeight.w700,

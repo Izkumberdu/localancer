@@ -25,7 +25,7 @@ class _FLhomescreenState extends State<FLhomescreen> {
           // Navigator.pushNamed(context, '/');
           break;
         case 1:
-          // Navigator.pushNamed(context, '/');
+          Navigator.pushNamed(context, '/forums');
           break;
         case 3:
           // Navigator.pushNamed(context, '/');
