@@ -66,5 +66,9 @@ flutter {
 }
 
 dependencies {
+<<<<<<< HEAD
   implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+=======
+        implementation 'com.google.firebase:firebase-core:latest_version'
+>>>>>>> 7c5ac21 (franz)
 }

@@ -43,28 +43,43 @@ class _MyWidgetState extends State<LocalancerApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+<<<<<<< HEAD
       home: Scaffold(
         backgroundColor: Color(0xFFFCFCFC),
         body: OnboardingScreen(
           usertype: 'client',
         ),
+=======
+      // ignore: prefer_const_constructors
+      home: Scaffold(
+        backgroundColor: const Color(0xFFFCFCFC),
+        body: const LoginPage(),
+>>>>>>> 7c5ac21 (franz)
       ),
       routes: {
         '/register1': (context) => const Register1(),
         '/login': (context) => LoginPage(),
         '/register2': (context) => const Register2(),
         '/register3': (context) => const Register3(),
-        '/onboarding': (context) => OnboardingScreen(
+        '/onboarding': (context) => const OnboardingScreen(
               usertype: '',
             ),
         '/registerFreelancer': (context) => const RegisterFreelancer(),
         '/registerClient': (context) => const RegisterClient(),
         '/photographers': (context) => const PhotographerScreen(),
+<<<<<<< HEAD
         '/client_homescreen': (context) => HomeScreen(),
         '/freelancer_homescreen': (context) => FLhomescreen(),
         '/portfolio_FL': (context) => FLPortfolio(),
         '/projects_FL': (context) => FreelancerProjects(),
         '/createportfolio': (context) => CreatePortfolio(),
+=======
+        '/client_homescreen': (context) => const HomeScreen(),
+        '/freelancer_homescreen': (context) => const FLhomescreen(),
+        '/portfolio_FL': (context) => const FLPortfolio(),
+        '/projects_FL': (context) => const FreelancerProjects(),
+        '/createportfolio': (context) => const CreatePortfolio(),
+>>>>>>> 7c5ac21 (franz)
         '/forums': (context) => Forums(),
         '/createForum': (context) => CreateForum(),
         '/selectedForum': (context) => SelectedForum(),

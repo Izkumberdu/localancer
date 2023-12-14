@@ -61,7 +61,7 @@ class _CarouselState extends State<Carousel> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(3, (index) {
                 return Container(
-                  margin: EdgeInsets.symmetric(horizontal: 2),
+                  margin: const EdgeInsets.symmetric(horizontal: 2),
                   child: Image.asset(
                     index == _current
                         ? 'assets/slider-active.png'
