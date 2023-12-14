@@ -81,7 +81,7 @@ class OnboardingScreen extends StatelessWidget {
                             if (usertype == 'client') {
                               return const HomeScreen();
                             } else {
-                              return const FLhomescreen();
+                              return const HomeScreen();
                             }
                           },
                           transitionsBuilder: (_, animation, __, child) {
