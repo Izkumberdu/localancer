@@ -324,7 +324,184 @@ class _FLhomescreenState extends State<FLhomescreen> {
                     ),
                   ],
                 ),
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Forums',
+                style: SoraBold.copyWith(fontSize: 24),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: SizeConfig.blockSizeHorizontal! * 40,
+                width: SizeConfig.blockSizeVertical! * 80,
+                margin: EdgeInsets.only(bottom: 20),
+                padding: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: kLightGreyer,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
+                child: Row(
+                  children: [
+                    Column(
+                      children: [
+                        Image.asset('assets/heart-forum.png'),
+                        SizedBox(
+                          height: SizeConfig.blockSizeHorizontal! * 1,
+                        ),
+                        Text(
+                          '100 Likes',
+                          style:
+                              SoraLight.copyWith(fontSize: 7, color: kDarkGrey),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Posted By: ',
+                                style: SoraRegular.copyWith(
+                                    fontSize: 10, color: kDarkGrey),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Container(
+                                height: 20,
+                                width: 20,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(30),
+                                  child: Image.asset(
+                                    'assets/photographer_1.png',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                'Joel Villarojo',
+                                style: SoraBold.copyWith(
+                                    fontSize: 10, color: kDarkGrey),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                '2 Days Ago',
+                                style: SoraRegular.copyWith(
+                                    fontSize: 10, color: kDarkGrey),
+                              ),
+                              SizedBox(
+                                width: 30,
+                              ),
+                              Container(
+                                height: 17,
+                                width: 72,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border:
+                                      Border.all(color: kDarkGrey, width: 2),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Discussion',
+                                    style: SoraRegular.copyWith(
+                                        fontSize: 10, color: kDarkGrey),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Best Camera for Events Photography?',
+                                style: SoraBold.copyWith(
+                                    color: kLightBlack, fontSize: 15),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Column(
+                            children: [
+                              Container(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Hey folks! What's your go-to camera for events? Looking to upgrade for better low-light performance and quick shots. Any recommendations? I've been researching various models but haven't settled on one yet. I'm looking for something that handles low-light situations well and offers flexibility for different event sizes. Some folks swear by... See More",
+                                      maxLines: 5,
+                                      style: SoraLight.copyWith(fontSize: 10),
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Image.asset('assets/chat.png'),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                '12 Comments',
+                                style: SoraExtraLight.copyWith(
+                                    fontSize: 10, color: kLightBlack),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Image.asset('assets/share.png'),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                'Share',
+                                style: SoraExtraLight.copyWith(
+                                    fontSize: 10, color: kLightBlack),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Image.asset('assets/save.png'),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                'Save',
+                                style: SoraExtraLight.copyWith(
+                                    fontSize: 10, color: kLightBlack),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),

@@ -65,7 +65,9 @@ class _MyWidgetState extends State<LocalancerApp> {
         '/createportfolio': (context) => CreatePortfolio(),
         '/forums': (context) => Forums(),
         '/createForum': (context) => CreateForum(),
-        '/selectedForum': (context) => SelectedForum(),
+        '/selectedForum': (context) => SelectedForum(
+              forumID: '',
+            ),
       },
     );
   }

@@ -45,14 +45,16 @@ class _CreateForumState extends State<CreateForum> {
       String numMembers = "1 Member";
 
       if (name.isNotEmpty && description.isNotEmpty) {
-        await _firestore.collection('forums').add({
+        final DocumentReference forumRef =
+            await _firestore.collection('forums').add({
           'adminID': adminID,
           'name': name,
           'description': description,
-          'numDiscussions': numDiscussions, // Default value
-          'numMembers': numMembers, // Default value
+          'numDiscussions': numDiscussions,
+          'numMembers': numMembers,
         });
-
+        final String forumID = forumRef.id;
+        await forumRef.update({'forumID': forumID});
         Navigator.pushNamed(context, '/forums');
       } else {
         print('Name and description are required fields');

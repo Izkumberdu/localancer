@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:localancer/app_styles.dart';
 import 'package:localancer/constants&models/constants.dart';
 import 'package:localancer/screens/Freelancer/FLnavbar.dart';
+import 'package:localancer/selectedForum.dart';
 import 'package:localancer/sidebar.dart';
 import 'package:localancer/size_config.dart';
 
@@ -23,6 +24,7 @@ class _ForumsState extends State<Forums> {
       numMembers: '1000 Members',
       numDiscussions: '200 Discussions',
       imageUrl: 'assets/forum-image.jpg',
+      forumID: 'aaasssdf',
     ),
   ];
 
@@ -61,13 +63,11 @@ class _ForumsState extends State<Forums> {
         forums = forumsSnapshot.docs.map((doc) {
           Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
           return Forum(
-            name: data['name'].toString(), // Ensure 'name' is a String
-            numMembers: data['numMembers']
-                .toString(), // Ensure 'numMembers' is a String
-            numDiscussions: data['numDiscussions']
-                .toString(), // Ensure 'numDiscussions' is a String
-            imageUrl: 'assets/forum-image.jpg', // Ensure 'imageUrl' is a String
-          );
+              name: data['name'],
+              numMembers: data['numMembers'],
+              numDiscussions: data['numDiscussions'],
+              imageUrl: 'assets/forum-image.jpg',
+              forumID: data['forumID']);
         }).toList();
       });
     } catch (e) {
@@ -308,7 +308,12 @@ class _ForumsState extends State<Forums> {
                 Forum forum = forums[index];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/selectedForum');
+                    Navigator.pushNamed(
+                      context,
+                      '/selectedForum',
+                      arguments:
+                          forum.forumID, // Pass the forumID as an argument
+                    );
                   },
                   child: Container(
                     margin: EdgeInsets.only(
@@ -425,11 +430,12 @@ class Forum {
   final String numMembers;
   final String numDiscussions;
   final String imageUrl;
+  final String forumID;
 
-  Forum({
-    required this.name,
-    required this.numMembers,
-    required this.numDiscussions,
-    required this.imageUrl,
-  });
+  Forum(
+      {required this.name,
+      required this.numMembers,
+      required this.numDiscussions,
+      required this.imageUrl,
+      required this.forumID});
 }

@@ -7,7 +7,9 @@ import 'package:localancer/sidebar.dart';
 import 'package:localancer/size_config.dart';
 
 class SelectedForum extends StatefulWidget {
-  const SelectedForum({Key? key}) : super(key: key);
+  final String forumID;
+
+  const SelectedForum({Key? key, required this.forumID}) : super(key: key);
 
   @override
   State<SelectedForum> createState() => _SelectedForumState();
