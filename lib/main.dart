@@ -16,7 +16,8 @@ import "package:localancer/screens/forum.dart";
 
 import "package:localancer/screens/onboarding.dart";
 import "package:localancer/screens/photographers_screen.dart";
-import "package:localancer/screens/selectedForum.dart";
+import 'package:localancer/screens/createForum.dart';
+import "package:localancer/selectedForum.dart";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,6 +64,7 @@ class _MyWidgetState extends State<LocalancerApp> {
         '/projects_FL': (context) => FreelancerProjects(),
         '/createportfolio': (context) => CreatePortfolio(),
         '/forums': (context) => Forums(),
+        '/createForum': (context) => CreateForum(),
         '/selectedForum': (context) => SelectedForum(),
       },
     );
