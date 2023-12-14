@@ -4,12 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localancer/app_styles.dart';
 import 'package:localancer/size_config.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginPage extends StatelessWidget {
-   LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+   const LoginPage({Key? key}) : super(key: key);
 
+   @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+    bool _isSigning = false;
+
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+
 
   @override
   Widget build(BuildContext context) {
@@ -147,7 +157,8 @@ class LoginPage extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, '/onboarding');
+            _signIn();
+            // Navigator.pushNamed(context, '/onboarding');
           },
           child: Container(
             height: SizeConfig.blockSizeVertical! * 5,
@@ -264,4 +275,38 @@ class LoginPage extends StatelessWidget {
       ],
     );
   }
+
+
+
+  void _signIn() async {
+  setState(() {
+    _isSigning = true;
+  });
+
+  String email = emailController.text; 
+  String password = passwordController.text;
+
+  try {
+    
+    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+   
+    if (userCredential.user != null) {
+      Navigator.pushNamed(context, "/onboarding");
+    }
+  } catch (e) {
+   
+    print("Sign in error: $e");
+    showToast(message: "Sign in failed. Check your credentials.");
+  } finally {
+    setState(() {
+      _isSigning = false;
+    });
+  }
+}
+
+  void showToast({required String message}) {}
 }

@@ -580,9 +580,7 @@ void _signUp() async {
        
         // ignore: use_build_context_synchronously
         Navigator.pushNamed(context, "/login"); 
-      } else {
-        // showToast(message: "Registration failed. Please try again.");
-      }
+      } 
     } else {
       setState(() {
         isSigningUp = false;
