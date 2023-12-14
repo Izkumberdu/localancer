@@ -41,14 +41,16 @@ class _CreateForumState extends State<CreateForum> {
 
       String name = _nameController.text;
       String description = _descriptionController.text;
+      String numDiscussions = '0 Discussions';
+      String numMembers = "1 Member";
 
       if (name.isNotEmpty && description.isNotEmpty) {
         await _firestore.collection('forums').add({
           'adminID': adminID,
           'name': name,
           'description': description,
-          'numDiscussions': '0', // Default value
-          'numMembers': 1, // Default value
+          'numDiscussions': numDiscussions, // Default value
+          'numMembers': numMembers, // Default value
         });
 
         Navigator.pushNamed(context, '/forums');

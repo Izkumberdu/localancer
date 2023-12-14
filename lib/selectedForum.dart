@@ -229,12 +229,17 @@ class _SelectedForumState extends State<SelectedForum> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          height: 20,
-                          width: 20,
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/back-icon.png'),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/forums');
+                          },
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/back-icon.png'),
+                              ),
                             ),
                           ),
                         ),

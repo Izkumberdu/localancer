@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localancer/app_styles.dart';
@@ -15,6 +16,15 @@ class Forums extends StatefulWidget {
 
 class _ForumsState extends State<Forums> {
   int _index = 0;
+
+  List<Forum> forums = [
+    Forum(
+      name: 'Event Photographers',
+      numMembers: '1000 Members',
+      numDiscussions: '200 Discussions',
+      imageUrl: 'assets/forum-image.jpg',
+    ),
+  ];
 
   void _onTapped(int index) {
     setState(() {
@@ -37,6 +47,34 @@ class _ForumsState extends State<Forums> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _fetchForums();
+  }
+
+  Future<void> _fetchForums() async {
+    try {
+      final QuerySnapshot forumsSnapshot =
+          await FirebaseFirestore.instance.collection('forums').get();
+
+      setState(() {
+        forums = forumsSnapshot.docs.map((doc) {
+          Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+          return Forum(
+            name: data['name'].toString(), // Ensure 'name' is a String
+            numMembers: data['numMembers']
+                .toString(), // Ensure 'numMembers' is a String
+            numDiscussions: data['numDiscussions']
+                .toString(), // Ensure 'numDiscussions' is a String
+            imageUrl: 'assets/forum-image.jpg', // Ensure 'imageUrl' is a String
+          );
+        }).toList();
+      });
+    } catch (e) {
+      print('Error fetching forums: $e');
+    }
+  }
+
   Widget build(BuildContext context) {
     SizeConfig sizeConfig = SizeConfig();
     sizeConfig.init(context);
@@ -198,7 +236,7 @@ class _ForumsState extends State<Forums> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(30),
                         child: Image.asset(
-                          'assets/forum-image.jpg',
+                          'assets/Freelancer_4.png',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -240,11 +278,15 @@ class _ForumsState extends State<Forums> {
                             height: 50,
                             width: 100,
                             decoration: BoxDecoration(
+                              color: kPink,
                               border: Border.all(width: 1, color: kLightBlack),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             child: Center(
-                              child: Text('Joined'),
+                              child: Text(
+                                'Join',
+                                style: SoraSemiBold.copyWith(color: kWhite),
+                              ),
                             ),
                           ),
                         ],
@@ -254,6 +296,99 @@ class _ForumsState extends State<Forums> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 16,
+            ),
+            // Use a ListView.builder to create a list of forums
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: forums.length,
+              itemBuilder: (context, index) {
+                Forum forum = forums[index];
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/selectedForum');
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(
+                        bottom: 16.0), // Adjust the value as needed
+                    height: SizeConfig.blockSizeHorizontal! * 25,
+                    width: SizeConfig.blockSizeVertical! * 70,
+                    decoration: BoxDecoration(
+                      color: kLightGreyer,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          height: SizeConfig.blockSizeHorizontal! * 25,
+                          width: SizeConfig.blockSizeVertical! * 15,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: Image.asset(
+                              forum.imageUrl,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: SizeConfig.blockSizeVertical! * 1,
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                forum.name,
+                                style: SoraBold.copyWith(fontSize: 16),
+                              ),
+                              SizedBox(height: 5),
+                              Text(
+                                forum.numMembers,
+                                style: SoraLight.copyWith(
+                                    fontSize: 10, color: kContraGrey),
+                              ),
+                              SizedBox(height: 2),
+                              Text(
+                                forum.numDiscussions,
+                                style: SoraLight.copyWith(
+                                    fontSize: 10, color: kContraGrey),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 50,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                  border:
+                                      Border.all(width: 1, color: kLightBlack),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                                child: Center(
+                                  child: Text('Joined'),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            )
           ],
         ),
       ),
@@ -283,4 +418,18 @@ class _ForumsState extends State<Forums> {
       ),
     );
   }
+}
+
+class Forum {
+  final String name;
+  final String numMembers;
+  final String numDiscussions;
+  final String imageUrl;
+
+  Forum({
+    required this.name,
+    required this.numMembers,
+    required this.numDiscussions,
+    required this.imageUrl,
+  });
 }
