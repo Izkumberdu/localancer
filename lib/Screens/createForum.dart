@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localancer/app_styles.dart';
@@ -18,10 +20,45 @@ class CreateForum extends StatefulWidget {
 }
 
 class _CreateForumState extends State<CreateForum> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   int _index = 0;
   List<File> selectedFiles = [];
   FilePickerResult? result;
   bool isLoading = false;
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  final TextEditingController _nameController = TextEditingController();
+
+  final TextEditingController _descriptionController = TextEditingController();
+
+  void _createForum() async {
+    User? user = _auth.currentUser;
+
+    if (user != null) {
+      String adminID = user.uid;
+
+      String name = _nameController.text;
+      String description = _descriptionController.text;
+
+      if (name.isNotEmpty && description.isNotEmpty) {
+        await _firestore.collection('forums').add({
+          'adminID': adminID,
+          'name': name,
+          'description': description,
+          'numDiscussions': '0', // Default value
+          'numMembers': 1, // Default value
+        });
+
+        Navigator.pushNamed(context, '/forums');
+      } else {
+        print('Name and description are required fields');
+      }
+    } else {
+      print('User not logged in');
+    }
+  }
 
   void pickFiles() async {
     try {
@@ -198,6 +235,7 @@ class _CreateForumState extends State<CreateForum> {
                           ],
                         ),
                         child: TextFormField(
+                          controller: _nameController,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(bottom: 15),
                             hintText: 'Name Of the Forum',
@@ -243,6 +281,7 @@ class _CreateForumState extends State<CreateForum> {
                           ],
                         ),
                         child: TextFormField(
+                          controller: _descriptionController,
                           maxLines: 5,
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(bottom: 15),
@@ -346,6 +385,7 @@ class _CreateForumState extends State<CreateForum> {
                   ),
                   GestureDetector(
                     onTap: () {
+                      _createForum();
                       Navigator.pushNamed(context, '/forums');
                     },
                     child: Row(
