@@ -563,6 +563,7 @@ class _Register1State extends State<Register1> {
 
     try {
       if (password == confirmPassword) {
+        // Use 'await' when calling the signUpWithEmailAndPassword method
         CustomUser? user = await _auth.signUpWithEmailAndPassword(
           email,
           password,
@@ -576,36 +577,32 @@ class _Register1State extends State<Register1> {
         });
 
         if (user != null) {
-          // ignore: use_build_context_synchronously
+          // Navigate to the login screen upon successful registration
           Navigator.pushNamed(context, "/login");
         } else {
           // showToast(message: "Registration failed. Please try again.");
+          // Consider adding error handling for unsuccessful registration
         }
       } else {
+        // Handle the case where passwords do not match
         setState(() {
           isSigningUp = false;
         });
       }
     } on FirebaseAuthException catch (e) {
+      // Handle specific FirebaseAuth exceptions
       setState(() {
         isSigningUp = false;
       });
 
-      if (user != null) {
-       
-        // ignore: use_build_context_synchronously
-        Navigator.pushNamed(context, "/login"); 
-      } 
-    } else {
-
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+      if (e.code == 'email-already-in-use') {
+        // showToast(message: "The account already exists for that email.");
+        // Consider showing an appropriate message to the user
       } else {
         print('Error occurred: $e');
       }
     } catch (e) {
+      // Handle generic exceptions
       print("Error during registration: $e");
 
       setState(() {
