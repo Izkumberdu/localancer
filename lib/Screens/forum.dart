@@ -17,6 +17,7 @@ class Forums extends StatefulWidget {
 
 class _ForumsState extends State<Forums> {
   int _index = 0;
+  String forumID = '';
 
   List<Forum> forums = [
     Forum(
@@ -27,6 +28,15 @@ class _ForumsState extends State<Forums> {
       forumID: 'aaasssdf',
     ),
   ];
+
+  void _onForumTapped(Forum forum) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SelectedForum(forumID: forum.forumID),
+      ),
+    );
+  }
 
   void _onTapped(int index) {
     setState(() {
@@ -216,7 +226,18 @@ class _ForumsState extends State<Forums> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, '/selectedForum');
+                if (_index >= 0 && _index < forums.length) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          SelectedForum(forumID: forums[_index].forumID),
+                    ),
+                  );
+                } else {
+                  // Handle the case where _index is out of range
+                  print("Invalid index: $_index");
+                }
               },
               child: Container(
                 height: SizeConfig.blockSizeHorizontal! * 25,
@@ -308,12 +329,18 @@ class _ForumsState extends State<Forums> {
                 Forum forum = forums[index];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/selectedForum',
-                      arguments:
-                          forum.forumID, // Pass the forumID as an argument
-                    );
+                    if (_index >= 0 && _index < forums.length) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              SelectedForum(forumID: forums[_index].forumID),
+                        ),
+                      );
+                    } else {
+                      // Handle the case where _index is out of range
+                      print("Invalid index: $_index");
+                    }
                   },
                   child: Container(
                     margin: EdgeInsets.only(

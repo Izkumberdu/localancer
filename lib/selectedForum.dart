@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localancer/app_styles.dart';
@@ -5,6 +6,7 @@ import 'package:localancer/constants&models/constants.dart';
 import 'package:localancer/screens/Freelancer/FLnavbar.dart';
 import 'package:localancer/sidebar.dart';
 import 'package:localancer/size_config.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SelectedForum extends StatefulWidget {
   final String forumID;
@@ -17,6 +19,33 @@ class SelectedForum extends StatefulWidget {
 
 class _SelectedForumState extends State<SelectedForum> {
   int _index = 0;
+  late ForumData forumData;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchForumData();
+  }
+
+  Future<void> _fetchForumData() async {
+    try {
+      DocumentSnapshot forumSnapshot = await FirebaseFirestore.instance
+          .collection('forums')
+          .doc(widget.forumID)
+          .get();
+
+      Map<String, dynamic> data = forumSnapshot.data() as Map<String, dynamic>;
+
+      setState(() {
+        forumData = ForumData(
+          name: data['name'],
+          description: data['description'],
+        );
+      });
+    } catch (e) {
+      print('Error fetching forum data: $e');
+    }
+  }
 
   void _onTapped(int index) {
     setState(() {
@@ -310,7 +339,7 @@ class _SelectedForumState extends State<SelectedForum> {
                               width: 10,
                             ),
                             Text(
-                              'Event\nPhotographers',
+                              forumData.name,
                               maxLines: 2,
                               style: GoogleFonts.sora(
                                 color: Colors.white,
@@ -352,7 +381,7 @@ class _SelectedForumState extends State<SelectedForum> {
                           height: 24,
                         ),
                         Text(
-                          'This forum is a dedicated space for passionate events photographers to collaborate, share insights, and discuss the intricacies of capturing special occasions. Join us to delve into the artistry of life through the lens.',
+                          forumData.description,
                           maxLines: 5,
                           style:
                               SoraLight.copyWith(fontSize: 12, color: kWhite),
@@ -383,4 +412,14 @@ class _SelectedForumState extends State<SelectedForum> {
       ),
     );
   }
+}
+
+class ForumData {
+  final String name;
+  final String description;
+
+  ForumData({
+    required this.name,
+    required this.description,
+  });
 }
